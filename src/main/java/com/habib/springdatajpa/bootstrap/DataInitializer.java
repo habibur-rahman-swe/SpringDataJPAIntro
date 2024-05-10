@@ -3,11 +3,13 @@ package com.habib.springdatajpa.bootstrap;
 import com.habib.springdatajpa.domain.Book;
 import com.habib.springdatajpa.repositories.BookRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
 
+@Profile({"local", "default"})
 @Component
 public class DataInitializer implements CommandLineRunner {
 
@@ -19,6 +21,8 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        bookRepository.deleteAll();
+
         Book book1 = new Book("Domain Driven", "123", "CTC");
         Book book2 = new Book("Domain Driven", "123", "CTC");
         Book book3 = new Book("Domain Driven", "123", "CTC");
