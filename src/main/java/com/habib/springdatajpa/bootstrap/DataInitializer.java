@@ -23,9 +23,9 @@ public class DataInitializer implements CommandLineRunner {
     public void run(String... args) throws Exception {
         bookRepository.deleteAll();
 
-        Book book1 = new Book("Domain Driven", "123", "CTC");
-        Book book2 = new Book("Domain Driven", "123", "CTC");
-        Book book3 = new Book("Domain Driven", "123", "CTC");
+        Book book1 = new Book("Domain Driven", "123", "CTC", null);
+        Book book2 = new Book("Domain Driven", "123", "CTC", null);
+        Book book3 = new Book("Domain Driven", "123", "CTC", null);
 
         List<Book> bookList = bookRepository.saveAll(Arrays.asList(book1, book2, book3));
 
