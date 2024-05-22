@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!--
+    <changeSet id="6" author="Habibur Rahman">
+        <createTable tableName="author_uuid">
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(255)"/>
+            <column name="last_name" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+ -->
+    <changeSet id="7" author="Habibur Rahman">
+        <createTable tableName="book_uuid">
+            <column name="id" type="binary(16)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="isbn" type="varchar(255)"/>
+            <column name="publisher" type="varchar(255)"/>
+            <column name="title" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
