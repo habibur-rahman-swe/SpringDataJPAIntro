@@ -2,8 +2,10 @@ package com.habib.springdatajpa;
 
 import com.habib.springdatajpa.domain.BookNatural;
 import com.habib.springdatajpa.domain.composite.AuthorComposite;
+import com.habib.springdatajpa.domain.composite.AuthorEmbedded;
 import com.habib.springdatajpa.domain.composite.NameId;
 import com.habib.springdatajpa.repositories.AuthorCompositeRepository;
+import com.habib.springdatajpa.repositories.AuthorEmbeddedRepository;
 import com.habib.springdatajpa.repositories.BookNaturalRepository;
 import com.habib.springdatajpa.repositories.BookRepository;
 import org.junit.jupiter.api.Test;
@@ -31,9 +33,24 @@ public class MySQLIntegrationTest {
     @Autowired
     AuthorCompositeRepository authorCompositeRepository;
 
+    @Autowired
+    AuthorEmbeddedRepository authorEmbeddedRepository;
+
+    @Test
+    void authorEmbeddedTest() {
+        NameId nameId = new NameId("John", "S");
+        AuthorEmbedded authorEmbedded = new AuthorEmbedded(nameId);
+
+        AuthorEmbedded saved = authorEmbeddedRepository.save(authorEmbedded);
+        assertThat(saved).isNotNull();
+
+        AuthorEmbedded fetched = authorEmbeddedRepository.getById(nameId);
+        assertThat(fetched).isNotNull();
+    }
+
     @Test
     void authorCompositeTest() {
-        NameId nameId = new NameId("John", "T");
+        NameId nameId = new NameId("Sohn", "T");
         AuthorComposite authorComposite = new AuthorComposite();
         authorComposite.setFirstName(nameId.getFirstName());
         authorComposite.setLastName(nameId.getLastName());
